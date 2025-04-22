@@ -1,11 +1,4 @@
 <?php
-if (!in_array($_SERVER['SERVER_NAME'], ['localhost', '127.0.0.1'])) {
-    if (!isset($_SERVER['HTTP_REFERER']) || 
-        parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST) !== $_SERVER['HTTP_HOST']) {
-        header('HTTP/1.0 403 Forbidden');
-        exit('Access Denied');
-    }
-}
 
 $willowusa = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '.m3u8');
 
